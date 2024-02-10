@@ -7,64 +7,62 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		840238522B6D32BC0062CE8B /* SnapCopyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840238512B6D32BC0062CE8B /* SnapCopyApp.swift */; };
-		840238542B6D32BC0062CE8B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840238532B6D32BC0062CE8B /* ContentView.swift */; };
-		840238562B6D32BD0062CE8B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 840238552B6D32BD0062CE8B /* Assets.xcassets */; };
-		840238592B6D32BD0062CE8B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 840238582B6D32BD0062CE8B /* Preview Assets.xcassets */; };
-		8471952B2B6E377700EBBA51 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 8471952A2B6E377700EBBA51 /* ComposableArchitecture */; };
+		8495C80E2B776F4800B3CFC2 /* SnapCopyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8495C80D2B776F4800B3CFC2 /* SnapCopyApp.swift */; };
+		8495C8102B776F4800B3CFC2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8495C80F2B776F4800B3CFC2 /* ContentView.swift */; };
+		8495C8122B776F4900B3CFC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8495C8112B776F4900B3CFC2 /* Assets.xcassets */; };
+		8495C8152B776F4900B3CFC2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8495C8142B776F4900B3CFC2 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		8402384E2B6D32BC0062CE8B /* SnapCopy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnapCopy.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		840238512B6D32BC0062CE8B /* SnapCopyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapCopyApp.swift; sourceTree = "<group>"; };
-		840238532B6D32BC0062CE8B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		840238552B6D32BD0062CE8B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		840238582B6D32BD0062CE8B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		8495C80A2B776F4800B3CFC2 /* SnapCopy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnapCopy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8495C80D2B776F4800B3CFC2 /* SnapCopyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapCopyApp.swift; sourceTree = "<group>"; };
+		8495C80F2B776F4800B3CFC2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		8495C8112B776F4900B3CFC2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8495C8142B776F4900B3CFC2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		8402384B2B6D32BC0062CE8B /* Frameworks */ = {
+		8495C8072B776F4800B3CFC2 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8471952B2B6E377700EBBA51 /* ComposableArchitecture in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		840238452B6D32BC0062CE8B = {
+		8495C8012B776F4800B3CFC2 = {
 			isa = PBXGroup;
 			children = (
-				840238502B6D32BC0062CE8B /* SnapCopy */,
-				8402384F2B6D32BC0062CE8B /* Products */,
+				8495C80C2B776F4800B3CFC2 /* SnapCopy */,
+				8495C80B2B776F4800B3CFC2 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		8402384F2B6D32BC0062CE8B /* Products */ = {
+		8495C80B2B776F4800B3CFC2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8402384E2B6D32BC0062CE8B /* SnapCopy.app */,
+				8495C80A2B776F4800B3CFC2 /* SnapCopy.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		840238502B6D32BC0062CE8B /* SnapCopy */ = {
+		8495C80C2B776F4800B3CFC2 /* SnapCopy */ = {
 			isa = PBXGroup;
 			children = (
-				840238512B6D32BC0062CE8B /* SnapCopyApp.swift */,
-				840238532B6D32BC0062CE8B /* ContentView.swift */,
-				840238552B6D32BD0062CE8B /* Assets.xcassets */,
-				840238572B6D32BD0062CE8B /* Preview Content */,
+				8495C80D2B776F4800B3CFC2 /* SnapCopyApp.swift */,
+				8495C80F2B776F4800B3CFC2 /* ContentView.swift */,
+				8495C8112B776F4900B3CFC2 /* Assets.xcassets */,
+				8495C8132B776F4900B3CFC2 /* Preview Content */,
 			);
 			path = SnapCopy;
 			sourceTree = "<group>";
 		};
-		840238572B6D32BD0062CE8B /* Preview Content */ = {
+		8495C8132B776F4900B3CFC2 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				840238582B6D32BD0062CE8B /* Preview Assets.xcassets */,
+				8495C8142B776F4900B3CFC2 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -72,42 +70,39 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8402384D2B6D32BC0062CE8B /* SnapCopy */ = {
+		8495C8092B776F4800B3CFC2 /* SnapCopy */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8402385C2B6D32BD0062CE8B /* Build configuration list for PBXNativeTarget "SnapCopy" */;
+			buildConfigurationList = 8495C8182B776F4900B3CFC2 /* Build configuration list for PBXNativeTarget "SnapCopy" */;
 			buildPhases = (
-				8402384A2B6D32BC0062CE8B /* Sources */,
-				8402384B2B6D32BC0062CE8B /* Frameworks */,
-				8402384C2B6D32BC0062CE8B /* Resources */,
+				8495C8062B776F4800B3CFC2 /* Sources */,
+				8495C8072B776F4800B3CFC2 /* Frameworks */,
+				8495C8082B776F4800B3CFC2 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = SnapCopy;
-			packageProductDependencies = (
-				8471952A2B6E377700EBBA51 /* ComposableArchitecture */,
-			);
 			productName = SnapCopy;
-			productReference = 8402384E2B6D32BC0062CE8B /* SnapCopy.app */;
+			productReference = 8495C80A2B776F4800B3CFC2 /* SnapCopy.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		840238462B6D32BC0062CE8B /* Project object */ = {
+		8495C8022B776F4800B3CFC2 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1520;
 				LastUpgradeCheck = 1520;
 				TargetAttributes = {
-					8402384D2B6D32BC0062CE8B = {
+					8495C8092B776F4800B3CFC2 = {
 						CreatedOnToolsVersion = 15.2;
 					};
 				};
 			};
-			buildConfigurationList = 840238492B6D32BC0062CE8B /* Build configuration list for PBXProject "SnapCopy" */;
+			buildConfigurationList = 8495C8052B776F4800B3CFC2 /* Build configuration list for PBXProject "SnapCopy" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -115,45 +110,42 @@
 				en,
 				Base,
 			);
-			mainGroup = 840238452B6D32BC0062CE8B;
-			packageReferences = (
-				847195292B6E377700EBBA51 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
-			);
-			productRefGroup = 8402384F2B6D32BC0062CE8B /* Products */;
+			mainGroup = 8495C8012B776F4800B3CFC2;
+			productRefGroup = 8495C80B2B776F4800B3CFC2 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8402384D2B6D32BC0062CE8B /* SnapCopy */,
+				8495C8092B776F4800B3CFC2 /* SnapCopy */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		8402384C2B6D32BC0062CE8B /* Resources */ = {
+		8495C8082B776F4800B3CFC2 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				840238592B6D32BD0062CE8B /* Preview Assets.xcassets in Resources */,
-				840238562B6D32BD0062CE8B /* Assets.xcassets in Resources */,
+				8495C8152B776F4900B3CFC2 /* Preview Assets.xcassets in Resources */,
+				8495C8122B776F4900B3CFC2 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		8402384A2B6D32BC0062CE8B /* Sources */ = {
+		8495C8062B776F4800B3CFC2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				840238542B6D32BC0062CE8B /* ContentView.swift in Sources */,
-				840238522B6D32BC0062CE8B /* SnapCopyApp.swift in Sources */,
+				8495C8102B776F4800B3CFC2 /* ContentView.swift in Sources */,
+				8495C80E2B776F4800B3CFC2 /* SnapCopyApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		8402385A2B6D32BD0062CE8B /* Debug */ = {
+		8495C8162B776F4900B3CFC2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -216,7 +208,7 @@
 			};
 			name = Debug;
 		};
-		8402385B2B6D32BD0062CE8B /* Release */ = {
+		8495C8172B776F4900B3CFC2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -272,18 +264,17 @@
 			};
 			name = Release;
 		};
-		8402385D2B6D32BD0062CE8B /* Debug */ = {
+		8495C8192B776F4900B3CFC2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SnapCopy/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = S37PCWVC2W;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = SnapCopy;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -296,7 +287,6 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dmytrochumakov.SnapCopy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -307,18 +297,17 @@
 			};
 			name = Debug;
 		};
-		8402385E2B6D32BD0062CE8B /* Release */ = {
+		8495C81A2B776F4900B3CFC2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SnapCopy/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = S37PCWVC2W;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = SnapCopy;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -331,7 +320,6 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dmytrochumakov.SnapCopy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -345,44 +333,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		840238492B6D32BC0062CE8B /* Build configuration list for PBXProject "SnapCopy" */ = {
+		8495C8052B776F4800B3CFC2 /* Build configuration list for PBXProject "SnapCopy" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				8402385A2B6D32BD0062CE8B /* Debug */,
-				8402385B2B6D32BD0062CE8B /* Release */,
+				8495C8162B776F4900B3CFC2 /* Debug */,
+				8495C8172B776F4900B3CFC2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8402385C2B6D32BD0062CE8B /* Build configuration list for PBXNativeTarget "SnapCopy" */ = {
+		8495C8182B776F4900B3CFC2 /* Build configuration list for PBXNativeTarget "SnapCopy" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				8402385D2B6D32BD0062CE8B /* Debug */,
-				8402385E2B6D32BD0062CE8B /* Release */,
+				8495C8192B776F4900B3CFC2 /* Debug */,
+				8495C81A2B776F4900B3CFC2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		847195292B6E377700EBBA51 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
-			requirement = {
-				kind = upToNextMinorVersion;
-				minimumVersion = 1.7.2;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		8471952A2B6E377700EBBA51 /* ComposableArchitecture */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 847195292B6E377700EBBA51 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
-			productName = ComposableArchitecture;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
-	rootObject = 840238462B6D32BC0062CE8B /* Project object */;
+	rootObject = 8495C8022B776F4800B3CFC2 /* Project object */;
 }

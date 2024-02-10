@@ -2,7 +2,7 @@
 //  ContentView.swift
 //  SnapCopy
 //
-//  Created by Dmytro Chumakov on 02.02.2024.
+//  Created by Dmytro Chumakov on 10.02.2024.
 //
 
 import SwiftUI
