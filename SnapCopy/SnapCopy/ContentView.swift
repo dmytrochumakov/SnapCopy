@@ -15,6 +15,8 @@ final class ViewModel: ObservableObject {
     @Published private(set) var isButtonDisabled = !UIPasteboard.general.hasStrings
     @Published var searchQuery = ""
     @Published var showAddItemView: Bool = false
+    @Published var showUpdateItemView: Bool = false
+    var selectedItem: String = ""
 
     init() {
         $searchQuery
@@ -37,13 +39,19 @@ final class ViewModel: ObservableObject {
     }
 
     func addNewItem(_ newItem: String) {
-addIfPossible(newItem)
+        addIfPossible(newItem)
     }
 
-    func addIfPossible(_ newItem: String)  {
-if !items.contains(where: { $0.name == newItem }) {
-                items.append(.init(name: newItem))
-            }
+    func addIfPossible(_ newItem: String) {
+        if !items.contains(where: { $0.name == newItem }) {
+            items.append(.init(name: newItem))
+        }
+    }
+
+    func updatedItem(_ updatedItem: String) {
+        if let index = items.firstIndex(where: { $0.name == selectedItem }) {            
+            items[index] = .init(name: updatedItem)            
+        }
     }
 
     func goToSettings() {
@@ -54,7 +62,7 @@ if !items.contains(where: { $0.name == newItem }) {
 
 struct Item: Identifiable, Hashable {
     var id: String { name }
-    let name: String
+    var name: String
 }
 
 struct ContentView: View {
@@ -75,11 +83,17 @@ struct ContentView: View {
                 pasteButton
                 listTtemsView
                 NavigationLink(
-                    destination: AddItemView(addTapped: { newItem in 
+                    destination: AddItemView(addTapped: { newItem in
                         viewModel.addNewItem(newItem)
-                    }), 
+                    }),
                     isActive: $viewModel.showAddItemView
-                    ) { EmptyView() }
+                ) { EmptyView() }
+                NavigationLink(
+                    destination: UpdateItenView(text: viewModel.selectedItem, updateTapped: { updatedItem in 
+                        viewModel.updatedItem(updatedItem)
+                    }),
+                    isActive: $viewModel.showUpdateItemView
+                ) { EmptyView() }
             }
             .navigationTitle("SnapCopy")
             .toolbar {
@@ -96,7 +110,10 @@ struct ContentView: View {
 
     private var listTtemsView: some View {
         List(viewModel.items) { item in
-            TextField("Item", text: .constant(item.name))
+            Text(item.name).onTapGesture {
+                viewModel.selectedItem = item.name
+                viewModel.showUpdateItemView = true
+            }
         }
         .searchable(text: $viewModel.searchQuery, prompt: "Search Items")
     }
@@ -148,6 +165,27 @@ struct AddItemView: View {
             TextField("Item content", text: $text)
             Button("Add") {
                 addTapped(text)
+                dismiss()
+            }
+            Spacer()
+        }
+    }
+}
+
+struct UpdateItenView: View {
+    @Environment(\.dismiss) var dismiss
+    @State private var text: String
+    private let updateTapped: (String) -> Void
+    init(text: String, updateTapped: @escaping (String) -> Void) {
+        _text = State(initialValue: text)
+        self.updateTapped = updateTapped
+    }
+
+    var body: some View {
+        VStack(spacing: 0) {
+            TextField("Item content", text: $text)
+            Button("Update") {
+                updateTapped(text)
                 dismiss()
             }
             Spacer()
