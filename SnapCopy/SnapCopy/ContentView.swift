@@ -64,6 +64,10 @@ final class ViewModel: ObservableObject {
     func copy(_ item: Item) {
         UIPasteboard.general.string = item.name
     }
+
+    func delete(at offsets: IndexSet) {
+        items.remove(atOffsets: offsets)
+    }
 }
 
 struct Item: Identifiable, Hashable {
@@ -128,8 +132,9 @@ struct ContentView: View {
     }
 
     private var listTtemsView: some View {
-        List(viewModel.items) { item in
-            Text(item.name)
+        List {
+            ForEach(viewModel.items) { item in
+                Text(item.name)
                 .onTapGesture {
                     viewModel.copy(item)
                     viewModel.showToast = true
@@ -138,6 +143,10 @@ struct ContentView: View {
                     viewModel.selectedItem = item.name
                     viewModel.showEditItemView = true
                 }
+            }    
+            .onDelete { indexSet in
+                viewModel.delete(at: indexSet)
+            }
         }
         .searchable(text: $viewModel.searchQuery, prompt: "Search Items")
     }
