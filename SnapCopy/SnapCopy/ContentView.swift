@@ -6,6 +6,7 @@
 //
 
 import Combine
+import SimpleToast
 import SwiftUI
 import TipKit
 
@@ -15,7 +16,8 @@ final class ViewModel: ObservableObject {
     @Published private(set) var isButtonDisabled = !UIPasteboard.general.hasStrings
     @Published var searchQuery = ""
     @Published var showAddItemView: Bool = false
-    @Published var showUpdateItemView: Bool = false
+    @Published var showEditItemView: Bool = false
+    @Published var showToast: Bool = false
     var selectedItem: String = ""
 
     init() {
@@ -49,14 +51,18 @@ final class ViewModel: ObservableObject {
     }
 
     func updatedItem(_ updatedItem: String) {
-        if let index = items.firstIndex(where: { $0.name == selectedItem }) {            
-            items[index] = .init(name: updatedItem)            
+        if let index = items.firstIndex(where: { $0.name == selectedItem }) {
+            items[index] = .init(name: updatedItem)
         }
     }
 
     func goToSettings() {
         guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
         UIApplication.shared.open(url)
+    }
+
+    func copy(_ item: Item) {
+        UIPasteboard.general.string = item.name
     }
 }
 
@@ -67,7 +73,10 @@ struct Item: Identifiable, Hashable {
 
 struct ContentView: View {
     @StateObject private var viewModel = ViewModel()
-
+    private let toastOptions = SimpleToastOptions(
+        alignment: .bottom,
+        hideAfter: 3
+    )
     init() {
         if #available(iOS 17.0, *) {
             #if DEBUG
@@ -78,42 +87,57 @@ struct ContentView: View {
     }
 
     var body: some View {
-        NavigationView {
-            VStack(spacing: 0) {
-                pasteButton
-                listTtemsView
-                NavigationLink(
-                    destination: AddItemView(addTapped: { newItem in
-                        viewModel.addNewItem(newItem)
-                    }),
-                    isActive: $viewModel.showAddItemView
-                ) { EmptyView() }
-                NavigationLink(
-                    destination: UpdateItenView(text: viewModel.selectedItem, updateTapped: { updatedItem in 
-                        viewModel.updatedItem(updatedItem)
-                    }),
-                    isActive: $viewModel.showUpdateItemView
-                ) { EmptyView() }
-            }
-            .navigationTitle("SnapCopy")
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    HStack(spacing: 0) {
-                        Button("Add") {
-                            viewModel.showAddItemView = true
+        ZStack(alignment: .top) {
+            NavigationView {
+                VStack(spacing: 0) {
+                    pasteButton
+                    listTtemsView
+                    NavigationLink(
+                        destination: AddItemView(addTapped: { newItem in
+                            viewModel.addNewItem(newItem)
+                        }),
+                        isActive: $viewModel.showAddItemView
+                    ) { EmptyView() }
+                    NavigationLink(
+                        destination: EditItenView(text: viewModel.selectedItem, updateTapped: { updatedItem in
+                            viewModel.updatedItem(updatedItem)
+                        }),
+                        isActive: $viewModel.showEditItemView
+                    ) { EmptyView() }
+                }
+                .navigationTitle("SnapCopy")
+                .toolbar {
+                    ToolbarItem(placement: .topBarTrailing) {
+                        HStack(spacing: 0) {
+                            Button("Add") {
+                                viewModel.showAddItemView = true
+                            }
                         }
                     }
                 }
             }
         }
+        .simpleToast(isPresented: $viewModel.showToast, options: toastOptions) {
+            Label("This is some simple toast message.", systemImage: "exclamationmark.triangle")
+                .padding()
+                .background(Color.red.opacity(0.8))
+                .foregroundColor(Color.white)
+                .cornerRadius(10)
+                .padding(.top)
+        }
     }
 
     private var listTtemsView: some View {
         List(viewModel.items) { item in
-            Text(item.name).onTapGesture {
-                viewModel.selectedItem = item.name
-                viewModel.showUpdateItemView = true
-            }
+            Text(item.name)
+                .onTapGesture {
+                    viewModel.copy(item)
+                    viewModel.showToast = true
+                }
+                .onLongPressGesture {
+                    viewModel.selectedItem = item.name
+                    viewModel.showEditItemView = true
+                }
         }
         .searchable(text: $viewModel.searchQuery, prompt: "Search Items")
     }
@@ -172,7 +196,7 @@ struct AddItemView: View {
     }
 }
 
-struct UpdateItenView: View {
+struct EditItenView: View {
     @Environment(\.dismiss) var dismiss
     @State private var text: String
     private let updateTapped: (String) -> Void
