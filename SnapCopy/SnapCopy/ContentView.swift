@@ -69,13 +69,18 @@ final class ViewModel: ObservableObject {
         items.remove(atOffsets: offsets)
     }
 }
-
-struct Item: Identifiable, Hashable {
-    var id: String { name }
+import SwiftData
+@Model
+final class Item {
     var name: String
+    init(name: String) {
+        self.name = name
+    }
 }
 
 struct ContentView: View {
+    @Environment(\.modelContext) var context
+@Query var items: [Item]
     @StateObject private var viewModel = ViewModel()
     private let toastOptions = SimpleToastOptions(
         alignment: .bottom,
@@ -98,7 +103,8 @@ struct ContentView: View {
                     listTtemsView
                     NavigationLink(
                         destination: AddItemView(addTapped: { newItem in
-                            viewModel.addNewItem(newItem)
+                            // viewModel.addNewItem(newItem)
+                            context.insert(Item(name: newItem))
                         }),
                         isActive: $viewModel.showAddItemView
                     ) { EmptyView() }
@@ -133,17 +139,17 @@ struct ContentView: View {
 
     private var listTtemsView: some View {
         List {
-            ForEach(viewModel.items) { item in
+            ForEach(items) { item in
                 Text(item.name)
-                .onTapGesture {
-                    viewModel.copy(item)
-                    viewModel.showToast = true
-                }
-                .onLongPressGesture {
-                    viewModel.selectedItem = item.name
-                    viewModel.showEditItemView = true
-                }
-            }    
+                    .onTapGesture {
+                        viewModel.copy(item)
+                        viewModel.showToast = true
+                    }
+                    .onLongPressGesture {
+                        viewModel.selectedItem = item.name
+                        viewModel.showEditItemView = true
+                    }
+            }
             .onDelete { indexSet in
                 viewModel.delete(at: indexSet)
             }
@@ -164,7 +170,9 @@ struct ContentView: View {
 
     private var defaultPasteButton: some View {
         Button("Paste") {
-            viewModel.paste()
+            if let string = UIPasteboard.general.string {
+           context.insert(Item(name: string))
+        }
         }
         .disabled(viewModel.isButtonDisabled)
     }
