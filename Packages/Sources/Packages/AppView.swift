@@ -22,21 +22,21 @@ final class ViewModel: ObservableObject {
     }
 }
 
-struct AppView: View {
+public struct AppView: View {
     @Environment(\.modelContext) var context
     @StateObject private var viewModel = ViewModel()
     private let toastOptions = SimpleToastOptions(
         alignment: .bottom,
         hideAfter: 3
     )
-    init() {
+    public init() {
         #if DEBUG
         try? Tips.resetDatastore()
         #endif
         try? Tips.configure()
     }
 
-    var body: some View {
+    public var body: some View {
         ZStack(alignment: .top) {
             NavigationStack {
                 VStack(spacing: 0) {

@@ -8,9 +8,9 @@
 import SwiftData
 
 @Model
-final class Item {
+public final class Item {
     var name: String
-    init(name: String) {
+    public init(name: String) {
         self.name = name
     }
 }

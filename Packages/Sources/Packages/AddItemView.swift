@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct AddItemView: View {
+public struct AddItemView: View {
     @Environment(\.dismiss) var dismiss
 
     @State private var text: String = ""
@@ -16,7 +16,7 @@ struct AddItemView: View {
         self.addTapped = addTapped
     }
 
-    var body: some View {
+    public var body: some View {
         VStack(spacing: 0) {
             TextField("Item content", text: $text)
             Button("Add") {
