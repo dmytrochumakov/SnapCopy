@@ -69,6 +69,7 @@ final class ViewModel: ObservableObject {
         items.remove(atOffsets: offsets)
     }
 }
+
 import SwiftData
 @Model
 final class Item {
@@ -80,7 +81,7 @@ final class Item {
 
 struct ContentView: View {
     @Environment(\.modelContext) var context
-@Query var items: [Item]
+    @Query var items: [Item]
     @StateObject private var viewModel = ViewModel()
     private let toastOptions = SimpleToastOptions(
         alignment: .bottom,
@@ -171,8 +172,8 @@ struct ContentView: View {
     private var defaultPasteButton: some View {
         Button("Paste") {
             if let string = UIPasteboard.general.string {
-           context.insert(Item(name: string))
-        }
+                context.insert(Item(name: string))
+            }
         }
         .disabled(viewModel.isButtonDisabled)
     }
@@ -190,46 +191,4 @@ struct GoToSettingsTip: Tip {
     var actions: [Action] = [.init {
         Text("Open Settings")
     }]
-}
-
-struct AddItemView: View {
-    @Environment(\.dismiss) var dismiss
-
-    @State private var text: String = ""
-    private let addTapped: (String) -> Void
-    init(addTapped: @escaping (String) -> Void) {
-        self.addTapped = addTapped
-    }
-
-    var body: some View {
-        VStack(spacing: 0) {
-            TextField("Item content", text: $text)
-            Button("Add") {
-                addTapped(text)
-                dismiss()
-            }
-            Spacer()
-        }
-    }
-}
-
-struct EditItenView: View {
-    @Environment(\.dismiss) var dismiss
-    @State private var text: String
-    private let updateTapped: (String) -> Void
-    init(text: String, updateTapped: @escaping (String) -> Void) {
-        _text = State(initialValue: text)
-        self.updateTapped = updateTapped
-    }
-
-    var body: some View {
-        VStack(spacing: 0) {
-            TextField("Item content", text: $text)
-            Button("Update") {
-                updateTapped(text)
-                dismiss()
-            }
-            Spacer()
-        }
-    }
 }
