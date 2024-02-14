@@ -139,23 +139,7 @@ struct ContentView: View {
     }
 
     private var listTtemsView: some View {
-        List {
-            ForEach(items) { item in
-                Text(item.name)
-                    .onTapGesture {
-                        viewModel.copy(item)
-                        viewModel.showToast = true
-                    }
-                    .onLongPressGesture {
-                        viewModel.selectedItem = item.name
-                        viewModel.showEditItemView = true
-                    }
-            }
-            .onDelete { indexSet in
-                viewModel.delete(at: indexSet)
-            }
-        }
-        .searchable(text: $viewModel.searchQuery, prompt: "Search Items")
+        ListItemsView()
     }
 
     private var pasteButton: some View {
