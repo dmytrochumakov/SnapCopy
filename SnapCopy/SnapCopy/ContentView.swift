@@ -98,23 +98,10 @@ struct ContentView: View {
 
     var body: some View {
         ZStack(alignment: .top) {
-            NavigationView {
+            NavigationStack {
                 VStack(spacing: 0) {
                     pasteButton
                     listTtemsView
-                    NavigationLink(
-                        destination: AddItemView(addTapped: { newItem in
-                            // viewModel.addNewItem(newItem)
-                            context.insert(Item(name: newItem))
-                        }),
-                        isActive: $viewModel.showAddItemView
-                    ) { EmptyView() }
-                    NavigationLink(
-                        destination: EditItenView(text: viewModel.selectedItem, updateTapped: { updatedItem in
-                            viewModel.updatedItem(updatedItem)
-                        }),
-                        isActive: $viewModel.showEditItemView
-                    ) { EmptyView() }
                 }
                 .navigationTitle("SnapCopy")
                 .toolbar {
@@ -123,8 +110,19 @@ struct ContentView: View {
                             Button("Add") {
                                 viewModel.showAddItemView = true
                             }
+                            .navigationDestination(isPresented: $viewModel.showAddItemView) {
+                                AddItemView(addTapped: { newItem in
+                                    // viewModel.addNewItem(newItem)
+                                    context.insert(Item(name: newItem))
+                                })
+                            }
                         }
                     }
+                }
+                .navigationDestination(isPresented: $viewModel.showEditItemView) {
+                    EditItenView(text: viewModel.selectedItem, updateTapped: { updatedItem in
+                        viewModel.updatedItem(updatedItem)
+                    })
                 }
             }
         }
