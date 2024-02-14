@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		84728EB22B7CE7ED007ED57A /* EditItenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84728EB12B7CE7ED007ED57A /* EditItenView.swift */; };
 		84728EB42B7CE808007ED57A /* AddItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84728EB32B7CE808007ED57A /* AddItemView.swift */; };
+		84728EB62B7CE884007ED57A /* GoToSettingsTip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84728EB52B7CE884007ED57A /* GoToSettingsTip.swift */; };
 		8495C80E2B776F4800B3CFC2 /* SnapCopyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8495C80D2B776F4800B3CFC2 /* SnapCopyApp.swift */; };
 		8495C8102B776F4800B3CFC2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8495C80F2B776F4800B3CFC2 /* ContentView.swift */; };
 		8495C8122B776F4900B3CFC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8495C8112B776F4900B3CFC2 /* Assets.xcassets */; };
@@ -19,6 +20,7 @@
 /* Begin PBXFileReference section */
 		84728EB12B7CE7ED007ED57A /* EditItenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditItenView.swift; sourceTree = "<group>"; };
 		84728EB32B7CE808007ED57A /* AddItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemView.swift; sourceTree = "<group>"; };
+		84728EB52B7CE884007ED57A /* GoToSettingsTip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoToSettingsTip.swift; sourceTree = "<group>"; };
 		8495C80A2B776F4800B3CFC2 /* SnapCopy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnapCopy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8495C80D2B776F4800B3CFC2 /* SnapCopyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapCopyApp.swift; sourceTree = "<group>"; };
 		8495C80F2B776F4800B3CFC2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 				8495C8132B776F4900B3CFC2 /* Preview Content */,
 				84728EB12B7CE7ED007ED57A /* EditItenView.swift */,
 				84728EB32B7CE808007ED57A /* AddItemView.swift */,
+				84728EB52B7CE884007ED57A /* GoToSettingsTip.swift */,
 			);
 			path = SnapCopy;
 			sourceTree = "<group>";
@@ -158,6 +161,7 @@
 				84728EB22B7CE7ED007ED57A /* EditItenView.swift in Sources */,
 				8495C8102B776F4800B3CFC2 /* ContentView.swift in Sources */,
 				8495C80E2B776F4800B3CFC2 /* SnapCopyApp.swift in Sources */,
+				84728EB62B7CE884007ED57A /* GoToSettingsTip.swift in Sources */,
 				84728EB42B7CE808007ED57A /* AddItemView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
