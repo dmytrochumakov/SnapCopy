@@ -12,7 +12,7 @@ import SwiftUI
 struct SnapCopyApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            AppView()
                 .modelContainer(for: [Item.self], inMemory: true)
         }
     }

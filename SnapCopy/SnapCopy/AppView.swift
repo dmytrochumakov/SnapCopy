@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  AppView.swift
 //  SnapCopy
 //
 //  Created by Dmytro Chumakov on 10.02.2024.
@@ -22,7 +22,7 @@ final class ViewModel: ObservableObject {
     }
 }
 
-struct ContentView: View {
+struct AppView: View {
     @Environment(\.modelContext) var context
     @StateObject private var viewModel = ViewModel()
     private let toastOptions = SimpleToastOptions(
@@ -94,5 +94,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    AppView()
 }
