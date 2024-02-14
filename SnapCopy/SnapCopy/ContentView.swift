@@ -11,62 +11,14 @@ import SwiftUI
 import TipKit
 
 final class ViewModel: ObservableObject {
-    private var cancellables: Set<AnyCancellable> = []
-    @Published private(set) var items: [Item] = []
     @Published private(set) var isButtonDisabled = !UIPasteboard.general.hasStrings
-    @Published var searchQuery = ""
     @Published var showAddItemView: Bool = false
     @Published var showEditItemView: Bool = false
     @Published var showToast: Bool = false
-    var selectedItem: String = ""
-
-    init() {
-        $searchQuery
-            .debounce(for: .milliseconds(300), scheduler: RunLoop.main)
-            .removeDuplicates()
-            .sink { [weak self] query in
-                self?.performSearch(query: query)
-            }
-            .store(in: &cancellables)
-    }
-
-    func performSearch(query: String) {
-        print("Searching for: \(query)")
-    }
-
-    func paste() {
-        if let string = UIPasteboard.general.string {
-            addIfPossible(string)
-        }
-    }
-
-    func addNewItem(_ newItem: String) {
-        addIfPossible(newItem)
-    }
-
-    func addIfPossible(_ newItem: String) {
-        if !items.contains(where: { $0.name == newItem }) {
-            items.append(.init(name: newItem))
-        }
-    }
-
-    func updatedItem(_ updatedItem: String) {
-        if let index = items.firstIndex(where: { $0.name == selectedItem }) {
-            items[index] = .init(name: updatedItem)
-        }
-    }
 
     func goToSettings() {
         guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
         UIApplication.shared.open(url)
-    }
-
-    func copy(_ item: Item) {
-        UIPasteboard.general.string = item.name
-    }
-
-    func delete(at offsets: IndexSet) {
-        items.remove(atOffsets: offsets)
     }
 }
 
@@ -88,12 +40,10 @@ struct ContentView: View {
         hideAfter: 3
     )
     init() {
-        if #available(iOS 17.0, *) {
-            #if DEBUG
-            try? Tips.resetDatastore()
-            #endif
-            try? Tips.configure()
-        }
+        #if DEBUG
+        try? Tips.resetDatastore()
+        #endif
+        try? Tips.configure()
     }
 
     var body: some View {
@@ -120,8 +70,8 @@ struct ContentView: View {
                     }
                 }
                 .navigationDestination(isPresented: $viewModel.showEditItemView) {
-                    EditItenView(text: viewModel.selectedItem, updateTapped: { updatedItem in
-                        viewModel.updatedItem(updatedItem)
+                    EditItenView(text: "some", updateTapped: { _ in
+
                     })
                 }
             }
@@ -141,23 +91,15 @@ struct ContentView: View {
     }
 
     private var pasteButton: some View {
-        if #available(iOS 17.0, *) {
-            return defaultPasteButton
-                .popoverTip(GoToSettingsTip()) { _ in
-                    viewModel.goToSettings()
-                }
-        } else {
-            return defaultPasteButton
-        }
-    }
-
-    private var defaultPasteButton: some View {
         Button("Paste") {
             if let string = UIPasteboard.general.string {
                 context.insert(Item(name: string))
             }
         }
         .disabled(viewModel.isButtonDisabled)
+        .popoverTip(GoToSettingsTip()) { _ in
+            viewModel.goToSettings()
+        }
     }
 }
 
