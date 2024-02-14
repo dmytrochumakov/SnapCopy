@@ -22,18 +22,8 @@ final class ViewModel: ObservableObject {
     }
 }
 
-import SwiftData
-@Model
-final class Item {
-    var name: String
-    init(name: String) {
-        self.name = name
-    }
-}
-
 struct ContentView: View {
     @Environment(\.modelContext) var context
-    @Query var items: [Item]
     @StateObject private var viewModel = ViewModel()
     private let toastOptions = SimpleToastOptions(
         alignment: .bottom,
