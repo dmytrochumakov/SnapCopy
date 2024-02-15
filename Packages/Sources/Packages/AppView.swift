@@ -5,7 +5,6 @@
 //  Created by Dmytro Chumakov on 10.02.2024.
 //
 
-import Combine
 import SimpleToast
 import SwiftUI
 import TipKit
@@ -15,6 +14,7 @@ public struct AppView: View {
     @State private var showAddItemView: Bool = false
     @State private var showEditItemView: Bool = false
     @State private var showToast: Bool = false
+    @State private var selectedEditItem: Item?
 
     private let toastOptions = SimpleToastOptions(
         alignment: .bottom,
@@ -41,34 +41,38 @@ public struct AppView: View {
                         HStack(spacing: 0) {
                             Button("Add") {
                                 showAddItemView = true
-                            }
-                            .navigationDestination(isPresented: $showAddItemView) {
-                                AddItemView(addTapped: { newItem in
-                                    context.insert(Item(name: newItem))
-                                })
-                            }
+                            }                           
                         }
                     }
                 }
+                 .navigationDestination(isPresented: $showAddItemView) {
+                                AddItemView()
+                            }
                 .navigationDestination(isPresented: $showEditItemView) {
-                    EditItenView(text: "some", updateTapped: { _ in
-
-                    })
+                    EditItenView(item: selectedEditItem)
                 }
             }
         }
         .simpleToast(isPresented: $showToast, options: toastOptions) {
-            Label("This is some simple toast message.", systemImage: "exclamationmark.triangle")
+            Label("Copied", systemImage: "info.circle")
                 .padding()
-                .background(Color.red.opacity(0.8))
+                .background(Color.blue.opacity(0.8))
                 .foregroundColor(Color.white)
                 .cornerRadius(10)
-                .padding(.top)
         }
     }
 
     private var listTtemsView: some View {
-        ListItemsView()
+        ListItemsView(
+            onCopy: { item in
+                UIPasteboard.general.string = item.name
+                showToast = true
+            },
+            onEdit: { item in
+                selectedEditItem = item
+                showEditItemView = true
+            }
+        )
     }
 
     private var pasteButton: some View {
@@ -78,15 +82,12 @@ public struct AppView: View {
             }
         }
         .popoverTip(GoToSettingsTip()) { _ in
-            goToSettings()
+          if let url = URL(string: UIApplication.openSettingsURLString) {
+            UIApplication.shared.open(url)
+        }
         }
     }
 
-    func goToSettings() {
-        if let url = URL(string: UIApplication.openSettingsURLString) {
-            UIApplication.shared.open(url)
-        }
-    }
 }
 
 #Preview {

@@ -9,21 +9,44 @@ import SwiftData
 import SwiftUI
 
 struct ListItemsView: View {
-    @Environment(\.modelContext) var context
+    @Environment(\.modelContext) private var context
     @Query private var items: [Item]
     @State private var searchQuery = ""
+
+    private var filteredItems: [Item] {
+        if searchQuery.isEmpty {
+            return items
+        }
+        return items.filter { $0.name.contains(searchQuery) }
+    }
+
+    private let onCopy: (Item) -> Void
+    private let onEdit: (Item) -> Void
+
+    init(
+        onCopy: @escaping (Item) -> Void,
+        onEdit: @escaping (Item) -> Void
+    ) {
+        self.onCopy = onCopy
+        self.onEdit = onEdit
+    }
+
     var body: some View {
         List {
-            ForEach(items) { item in
+            ForEach(filteredItems) { item in
                 Text(item.name)
                     .onTapGesture {
-                        // copy
+                        onCopy(item)
                     }
                     .onLongPressGesture {
-                        // edit
+                        onEdit(item)
                     }
             }
-            .onDelete { _ in
+            .onDelete { indexSet in
+            for index in indexSet {
+        let item = items[index]
+        context.delete(item)
+    }
             }
         }
         .searchable(text: $searchQuery, prompt: "Search Items")

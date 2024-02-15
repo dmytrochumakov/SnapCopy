@@ -8,22 +8,19 @@
 import SwiftUI
 
 public struct AddItemView: View {
+    @Environment(\.modelContext) private var context
     @Environment(\.dismiss) var dismiss
-
-    @State private var text: String = ""
-    private let addTapped: (String) -> Void
-    init(addTapped: @escaping (String) -> Void) {
-        self.addTapped = addTapped
-    }
+    @State private var text: String = ""    
 
     public var body: some View {
         VStack(spacing: 0) {
             TextField("Item content", text: $text)
             Button("Add") {
-                addTapped(text)
+                context.insert(Item(name: text))
                 dismiss()
             }
             Spacer()
         }
+        .navigationTitle("Add Item")
     }
 }
