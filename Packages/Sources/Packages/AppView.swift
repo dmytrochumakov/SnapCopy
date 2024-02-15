@@ -10,25 +10,18 @@ import SimpleToast
 import SwiftUI
 import TipKit
 
-final class ViewModel: ObservableObject {
-    @Published private(set) var isButtonDisabled = !UIPasteboard.general.hasStrings
-    @Published var showAddItemView: Bool = false
-    @Published var showEditItemView: Bool = false
-    @Published var showToast: Bool = false
-
-    func goToSettings() {
-        guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
-        UIApplication.shared.open(url)
-    }
-}
-
 public struct AppView: View {
-    @Environment(\.modelContext) var context
-    @StateObject private var viewModel = ViewModel()
+
+    @Environment(\.modelContext) private var context
+     @State private var showAddItemView: Bool = false
+    @State private var showEditItemView: Bool = false
+    @State private var showToast: Bool = false
+
     private let toastOptions = SimpleToastOptions(
         alignment: .bottom,
         hideAfter: 3
     )
+
     public init() {
         #if DEBUG
         try? Tips.resetDatastore()
@@ -48,25 +41,24 @@ public struct AppView: View {
                     ToolbarItem(placement: .topBarTrailing) {
                         HStack(spacing: 0) {
                             Button("Add") {
-                                viewModel.showAddItemView = true
+                                showAddItemView = true
                             }
-                            .navigationDestination(isPresented: $viewModel.showAddItemView) {
-                                AddItemView(addTapped: { newItem in
-                                    // viewModel.addNewItem(newItem)
+                            .navigationDestination(isPresented: $showAddItemView) {
+                                AddItemView(addTapped: { newItem in                                    
                                     context.insert(Item(name: newItem))
                                 })
                             }
                         }
                     }
                 }
-                .navigationDestination(isPresented: $viewModel.showEditItemView) {
+                .navigationDestination(isPresented: $showEditItemView) {
                     EditItenView(text: "some", updateTapped: { _ in
 
                     })
                 }
             }
         }
-        .simpleToast(isPresented: $viewModel.showToast, options: toastOptions) {
+        .simpleToast(isPresented: $showToast, options: toastOptions) {
             Label("This is some simple toast message.", systemImage: "exclamationmark.triangle")
                 .padding()
                 .background(Color.red.opacity(0.8))
@@ -86,9 +78,14 @@ public struct AppView: View {
                 context.insert(Item(name: string))
             }
         }
-        .disabled(viewModel.isButtonDisabled)
         .popoverTip(GoToSettingsTip()) { _ in
-            viewModel.goToSettings()
+            goToSettings()
+        }
+    }
+
+    func goToSettings() {
+        if let url = URL(string: UIApplication.openSettingsURLString) {
+            UIApplication.shared.open(url)
         }
     }
 }
