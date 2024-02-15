@@ -11,9 +11,8 @@ import SwiftUI
 import TipKit
 
 public struct AppView: View {
-
     @Environment(\.modelContext) private var context
-     @State private var showAddItemView: Bool = false
+    @State private var showAddItemView: Bool = false
     @State private var showEditItemView: Bool = false
     @State private var showToast: Bool = false
 
@@ -44,7 +43,7 @@ public struct AppView: View {
                                 showAddItemView = true
                             }
                             .navigationDestination(isPresented: $showAddItemView) {
-                                AddItemView(addTapped: { newItem in                                    
+                                AddItemView(addTapped: { newItem in
                                     context.insert(Item(name: newItem))
                                 })
                             }
