@@ -14,7 +14,7 @@ struct SnapCopyApp: App {
     var body: some Scene {
         WindowGroup {
             AppView()
-                .modelContainer(for: [Item.self], inMemory: true)
+                .modelContainer(for: [Item.self])
         }
     }
 }

@@ -10,15 +10,19 @@ import SwiftUI
 struct EditItenView: View {
     @Environment(\.dismiss) var dismiss
     @State private var text: String
-
+    private var item: Item?
     init(item: Item?) {
+        self.item = item
         _text = State(initialValue: item?.name ?? "")
     }
 
     var body: some View {
         VStack(spacing: 0) {
             TextField("Item content", text: $text)
-            Button("Update") {                             
+            Button("Update") {
+                if let item {
+                    item.name = text
+                }
                 dismiss()
             }
             Spacer()

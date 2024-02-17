@@ -41,13 +41,13 @@ public struct AppView: View {
                         HStack(spacing: 0) {
                             Button("Add") {
                                 showAddItemView = true
-                            }                           
+                            }
                         }
                     }
                 }
-                 .navigationDestination(isPresented: $showAddItemView) {
-                                AddItemView()
-                            }
+                .navigationDestination(isPresented: $showAddItemView) {
+                    AddItemView()
+                }
                 .navigationDestination(isPresented: $showEditItemView) {
                     EditItenView(item: selectedEditItem)
                 }
@@ -82,12 +82,11 @@ public struct AppView: View {
             }
         }
         .popoverTip(GoToSettingsTip()) { _ in
-          if let url = URL(string: UIApplication.openSettingsURLString) {
-            UIApplication.shared.open(url)
-        }
+            if let url = URL(string: UIApplication.openSettingsURLString) {
+                UIApplication.shared.open(url)
+            }
         }
     }
-
 }
 
 #Preview {

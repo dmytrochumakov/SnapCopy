@@ -9,7 +9,7 @@ import SwiftData
 
 @Model
 public final class Item {
-    var name: String
+    var name: String = ""
     public init(name: String) {
         self.name = name
     }

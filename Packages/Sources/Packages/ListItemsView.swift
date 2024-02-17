@@ -43,10 +43,10 @@ struct ListItemsView: View {
                     }
             }
             .onDelete { indexSet in
-            for index in indexSet {
-        let item = items[index]
-        context.delete(item)
-    }
+                for index in indexSet {
+                    let item = items[index]
+                    context.delete(item)
+                }
             }
         }
         .searchable(text: $searchQuery, prompt: "Search Items")

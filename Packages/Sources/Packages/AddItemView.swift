@@ -10,7 +10,7 @@ import SwiftUI
 public struct AddItemView: View {
     @Environment(\.modelContext) private var context
     @Environment(\.dismiss) var dismiss
-    @State private var text: String = ""    
+    @State private var text: String = ""
 
     public var body: some View {
         VStack(spacing: 0) {
