@@ -285,7 +285,7 @@
 				CODE_SIGN_ENTITLEMENTS = SnapCopy/SnapCopyDebug.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"SnapCopy/Preview Content\"";
 				DEVELOPMENT_TEAM = S37PCWVC2W;
 				ENABLE_PREVIEWS = YES;
@@ -323,7 +323,7 @@
 				CODE_SIGN_ENTITLEMENTS = SnapCopy/SnapCopyRelease.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"SnapCopy/Preview Content\"";
 				DEVELOPMENT_TEAM = S37PCWVC2W;
 				ENABLE_PREVIEWS = YES;
