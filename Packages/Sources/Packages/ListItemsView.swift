@@ -34,15 +34,7 @@ struct ListItemsView: View {
     var body: some View {
         List {
             ForEach(filteredItems) { item in
-                Text(item.name)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .font(.system(size: 20, weight: .regular))
-                    .onTapGesture {
-                        onCopy(item)
-                    }
-                    .onLongPressGesture {
-                        onEdit(item)
-                    }
+                row(for: item)
             }
             .onDelete { indexSet in
                 for index in indexSet {
@@ -52,5 +44,19 @@ struct ListItemsView: View {
             }
         }
         .searchable(text: $searchQuery, prompt: "Search Items")
+    }
+
+    func row(for item: Item) -> some View {
+        Button {
+            onCopy(item)
+        } label: {
+            Text(item.name)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .font(.system(size: 20, weight: .regular))
+                .foregroundColor(.primary)
+        }
+        .simultaneousGesture(LongPressGesture(minimumDuration: 1).onEnded { _ in
+            onEdit(item)
+        })
     }
 }
