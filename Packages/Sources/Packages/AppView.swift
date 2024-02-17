@@ -80,12 +80,12 @@ public struct AppView: View {
             if let string = UIPasteboard.general.string {
                 context.insert(Item(name: string))
             }
-        }
-        .popoverTip(GoToSettingsTip()) { _ in
-            if let url = URL(string: UIApplication.openSettingsURLString) {
-                UIApplication.shared.open(url)
+        }.buttonStyle(AppButtonStyle()).padding(16)
+            .popoverTip(GoToSettingsTip()) { _ in
+                if let url = URL(string: UIApplication.openSettingsURLString) {
+                    UIApplication.shared.open(url)
+                }
             }
-        }
     }
 }
 

@@ -13,14 +13,15 @@ public struct AddItemView: View {
     @State private var text: String = ""
 
     public var body: some View {
-        VStack(spacing: 0) {
+        VStack(spacing: 12) {
             TextField("Item content", text: $text)
+                .textFieldStyle(AppTextFieldStyle())
             Button("Add") {
                 context.insert(Item(name: text))
                 dismiss()
-            }
+            }.buttonStyle(AppButtonStyle())
             Spacer()
-        }
-        .navigationTitle("Add Item")
+        }.padding(16)
+            .navigationTitle("Add Item")
     }
 }

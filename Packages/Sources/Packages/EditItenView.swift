@@ -17,16 +17,17 @@ struct EditItenView: View {
     }
 
     var body: some View {
-        VStack(spacing: 0) {
+        VStack(spacing: 12) {
             TextField("Item content", text: $text)
+                .textFieldStyle(AppTextFieldStyle())
             Button("Update") {
                 if let item {
                     item.name = text
                 }
                 dismiss()
-            }
+            }.buttonStyle(AppButtonStyle())
             Spacer()
-        }
-        .navigationTitle("Edit Item")
+        }.padding(16)
+            .navigationTitle("Edit Item")
     }
 }

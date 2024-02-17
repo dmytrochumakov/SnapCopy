@@ -35,6 +35,8 @@ struct ListItemsView: View {
         List {
             ForEach(filteredItems) { item in
                 Text(item.name)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .font(.system(size: 20, weight: .regular))
                     .onTapGesture {
                         onCopy(item)
                     }
