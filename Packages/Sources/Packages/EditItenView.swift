@@ -19,7 +19,7 @@ struct EditItenView: View {
     var body: some View {
         VStack(spacing: 12) {
             TextField("Item content", text: $text)
-                .textFieldStyle(AppTextFieldStyle())
+                .textFieldStyle(AppTextFieldStyle(text: $text))
             Button("Update") {
                 if let item {
                     item.name = text

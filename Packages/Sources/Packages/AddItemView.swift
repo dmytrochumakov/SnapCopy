@@ -15,7 +15,7 @@ public struct AddItemView: View {
     public var body: some View {
         VStack(spacing: 12) {
             TextField("Item content", text: $text)
-                .textFieldStyle(AppTextFieldStyle())
+                .textFieldStyle(AppTextFieldStyle(text: $text))
             Button("Add") {
                 context.insert(Item(name: text))
                 dismiss()
