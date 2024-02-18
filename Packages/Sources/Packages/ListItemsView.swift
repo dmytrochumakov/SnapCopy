@@ -35,6 +35,14 @@ struct ListItemsView: View {
         List {
             ForEach(filteredItems) { item in
                 row(for: item)
+                    .swipeActions(edge: .leading, allowsFullSwipe: false) {
+                        Button {
+                            onEdit(item)
+                        } label: {
+                            Label("Edit", systemImage: "square.and.pencil")
+                        }
+                        .tint(.blue)
+                    }
             }
             .onDelete { indexSet in
                 for index in indexSet {
@@ -47,16 +55,10 @@ struct ListItemsView: View {
     }
 
     func row(for item: Item) -> some View {
-        Button {
+        Button(item.name) {
             onCopy(item)
-        } label: {
-            Text(item.name)
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .font(.system(size: 20, weight: .regular))
-                .foregroundColor(.primary)
         }
-        .simultaneousGesture(LongPressGesture(minimumDuration: 1).onEnded { _ in
-            onEdit(item)
-        })
+        .font(.system(size: 20, weight: .regular))
+        .foregroundColor(.primary)
     }
 }

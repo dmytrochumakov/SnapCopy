@@ -17,7 +17,7 @@ public struct AppView: View {
     @State private var showEditItemView: Bool = false
     @State private var showToast: Bool = false
     @State private var selectedEditItem: Item?
-    @State private var pasteButtonDisabled: Bool = UIPasteboard.general.string == nil    
+    @State private var pasteButtonDisabled: Bool = UIPasteboard.general.string == nil
     @State private var cancellables = Set<AnyCancellable>()
 
     private let toastOptions = SimpleToastOptions(
