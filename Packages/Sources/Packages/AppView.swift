@@ -44,9 +44,12 @@ public struct AppView: View {
                 .toolbar {
                     ToolbarItem(placement: .topBarTrailing) {
                         HStack(spacing: 0) {
-                            Button("Add") {
+                            Button {
                                 showAddItemView = true
+                            } label: {
+                                Label("Add", systemImage: "plus")
                             }
+                            .frame(width: 44, height: 44)
                         }
                     }
                 }
