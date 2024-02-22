@@ -50,6 +50,7 @@ public struct AppView: View {
                                 Label("Add", systemImage: "plus")
                             }
                             .frame(width: 44, height: 44)
+                            .keyboardShortcut(KeyEquivalent("n"), modifiers: .command)
                         }
                     }
                 }
@@ -113,6 +114,7 @@ public struct AppView: View {
         }
         .buttonStyle(AppButtonStyle())
         .padding(16)
+        .keyboardShortcut(KeyEquivalent("p"), modifiers: .command)
     }
 
     private func paste() {

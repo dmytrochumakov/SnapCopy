@@ -16,5 +16,13 @@ struct SnapCopyApp: App {
             AppView()
                 .modelContainer(for: [Item.self])
         }
+        .commands {
+            CommandGroup(after: CommandGroupPlacement.newItem) {
+                Button("Paste") {}
+                    .keyboardShortcut(KeyEquivalent("p"), modifiers: .command)
+                Button("Add") {}
+                    .keyboardShortcut(KeyEquivalent("n"), modifiers: .command)
+            }
+        }
     }
 }
