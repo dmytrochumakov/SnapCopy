@@ -36,12 +36,12 @@ struct ListItemsView: View {
             ForEach(filteredItems) { item in
                 row(for: item)
                     .swipeActions(edge: .leading, allowsFullSwipe: false) {
-                        Button {
-                            onEdit(item)
-                        } label: {
-                            Label("Edit", systemImage: "square.and.pencil")
-                        }
-                        .tint(.blue)
+                        editButton(for: item)
+                            .tint(.blue)
+                    }
+                    .contextMenu {
+                        editButton(for: item)
+                        deleteButton(for: item)
                     }
             }
             .onDelete { indexSet in
@@ -54,11 +54,27 @@ struct ListItemsView: View {
         .searchable(text: $searchQuery, prompt: "Search Items")
     }
 
-    func row(for item: Item) -> some View {
+    private func row(for item: Item) -> some View {
         Button(item.name) {
             onCopy(item)
         }
         .font(.system(size: 20, weight: .regular))
         .foregroundColor(.primary)
+    }
+
+    private func editButton(for item: Item) -> some View {
+        Button {
+            onEdit(item)
+        } label: {
+            Label("Edit", systemImage: "square.and.pencil")
+        }
+    }
+
+    private func deleteButton(for item: Item) -> some View {
+        Button {
+            context.delete(item)
+        } label: {
+            Label("Delete", systemImage: "trash")
+        }
     }
 }
