@@ -7,10 +7,10 @@
 
 import CloudKit
 import Combine
+import Inject
 import SimpleToast
 import SwiftUI
 import TipKit
-import Inject
 
 public struct AppView: View {
     @ObserveInjection private var iO
@@ -19,7 +19,6 @@ public struct AppView: View {
     @State private var showEditItemView: Bool = false
     @State private var showToast: Bool = false
     @State private var selectedEditItem: Item?
-    @State private var pasteButtonDisabled: Bool = UIPasteboard.general.string == nil
     @State private var cancellables = Set<AnyCancellable>()
 
     private let toastOptions = SimpleToastOptions(
@@ -32,7 +31,6 @@ public struct AppView: View {
         try? Tips.resetDatastore()
         #endif
         try? Tips.configure()
-        subscribeToPasteboard()
     }
 
     public var body: some View {
@@ -44,7 +42,7 @@ public struct AppView: View {
                 }
                 .navigationTitle("SnapCopy")
                 .toolbar {
-                    ToolbarItem(placement: .topBarTrailing) {
+                    ToolbarItem {
                         HStack(spacing: 0) {
                             Button {
                                 showAddItemView = true
@@ -76,7 +74,7 @@ public struct AppView: View {
     private var listTtemsView: some View {
         ListItemsView(
             onCopy: { item in
-                UIPasteboard.general.string = item.name
+                copy(item)
                 showToast = true
             },
             onEdit: { item in
@@ -87,29 +85,55 @@ public struct AppView: View {
     }
 
     private var pasteButton: some View {
+        #if os(iOS)
+        return iOSPasteButton
+        #elseif os(macOS)
+        return macOSPasteButton
+        #endif
+    }
+
+    private var iOSPasteButton: some View {
         Button("Paste") {
-            if let string = UIPasteboard.general.string {
-                context.insert(Item(name: string))
-            }
+            paste()
         }
-        .disabled(pasteButtonDisabled)
         .buttonStyle(AppButtonStyle())
         .padding(16)
         .popoverTip(GoToSettingsTip()) { _ in
+            #if os(iOS)
             if let url = URL(string: UIApplication.openSettingsURLString) {
                 UIApplication.shared.open(url)
             }
+            #endif
         }
     }
 
-    private func subscribeToPasteboard() {
-        NotificationCenter
-            .default
-            .publisher(for: UIPasteboard.changedNotification)
-            .sink { _ in
-                pasteButtonDisabled = UIPasteboard.general.string == nil
-            }
-            .store(in: &cancellables)
+    private var macOSPasteButton: some View {
+        Button("Paste") {
+            paste()
+        }
+        .buttonStyle(AppButtonStyle())
+        .padding(16)
+    }
+
+    private func paste() {
+        #if os(iOS)
+        if let string = UIPasteboard.general.string {
+            context.insert(Item(name: string))
+        }
+        #elseif os(macOS)
+        if let string = NSPasteboard.general.string(forType: .string) {
+            context.insert(Item(name: string))
+        }
+        #endif
+    }
+
+    func copy(_ item: Item) {
+        #if os(iOS)
+        UIPasteboard.general.string = item.name
+        #elseif os(macOS)
+        NSPasteboard.general.clearContents()
+        NSPasteboard.general.setString(item.name, forType: .string)
+        #endif
     }
 }
 
