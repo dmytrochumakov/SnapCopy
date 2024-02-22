@@ -15,13 +15,17 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/sanzaru/SimpleToast.git", from: "0.8.1"),
+        .package(url: "https://github.com/krzysztofzablocki/Inject.git", exact: "1.2.3"),
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
             name: "Packages",
-            dependencies: ["SimpleToast"]
+            dependencies: [
+                "SimpleToast",
+                "Inject",
+            ]
         ),
         .testTarget(
             name: "PackagesTests",

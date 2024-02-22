@@ -10,8 +10,10 @@ import Combine
 import SimpleToast
 import SwiftUI
 import TipKit
+import Inject
 
 public struct AppView: View {
+    @ObserveInjection private var iO
     @Environment(\.modelContext) private var context
     @State private var showAddItemView: Bool = false
     @State private var showEditItemView: Bool = false
@@ -68,6 +70,7 @@ public struct AppView: View {
                 .foregroundColor(Color.white)
                 .cornerRadius(10)
         }
+        .enableInjection()
     }
 
     private var listTtemsView: some View {
