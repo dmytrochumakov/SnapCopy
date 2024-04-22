@@ -14,8 +14,6 @@ jobs:
     name: Build iOS
     runs-on: macos-14
     steps:
-      - name: Checkout
+      - name: Build 
         uses: actions/checkout@v2
-
-      - name: iOS - ${{ matrix.destination }}
         run: fastlane build_app
