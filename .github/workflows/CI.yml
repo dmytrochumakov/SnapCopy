@@ -3,17 +3,10 @@ name: CI
 on:
   push:
     branches:
-      - main      
-  pull_request:
-    branches:
-      - main
-
+      - 'main'
 jobs:
-  
-  iOS:
-    name: Build iOS
-    runs-on: macos-14
+  build:
+    runs-on: macos-latest
     steps:
-      - name: Build 
-        uses: actions/checkout@v2
-        run: fastlane build_app
+      - uses: actions/checkout@v2
+      - run: fastlane build_app
