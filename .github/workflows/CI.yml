@@ -20,7 +20,7 @@ jobs:
       run: gem install xcpretty
 
     - name: Debug Directory Contents
-      run: ls -la /Users/runner/work/SnapCopy/SnapCopy
+      run: ls -la /Users/runner/work/SnapCopy/SnapCopy/SnapCopy
 
     - name: Build project
-      run: xcodebuild -scheme "SnapCopy" -destination "platform=iOS Simulator,name=iPhone 15 Pro" clean build | xcpretty
+      run: xcodebuild -project /SnapCopy/SnapCopy.xcodeproj -SnapCopy YourSchemeName clean build | xcpretty
