@@ -17,7 +17,7 @@ jobs:
       run: sudo xcode-select -s /Applications/Xcode_15.3.app/Contents/Developer
 
     - name: Install xcpretty
-      run: gem install xcpretty    
+      run: gem install xcpretty
 
     - name: Build project
-      run: xcodebuild -project /Users/runner/work/SnapCopy/SnapCopy/SnapCopy/SnapCopy.xcodeproj -scheme SnapCopy clean build | xcpretty
+      run: xcodebuild -project /Users/runner/work/SnapCopy/SnapCopy/SnapCopy/SnapCopy.xcodeproj -scheme SnapCopy -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 15 Pro' clean build | xcpretty
