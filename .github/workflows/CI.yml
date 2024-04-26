@@ -23,4 +23,4 @@ jobs:
       run: xcodebuild -project /Users/runner/work/SnapCopy/SnapCopy/SnapCopy/SnapCopy.xcodeproj -scheme SnapCopy -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 15 Pro' clean build | xcpretty
 
     - name: Test project
-      run: xcodebuild -project /Users/runner/work/SnapCopy/SnapCopy/SnapCopy/SnapCopy.xcodeproj -scheme PackagesTests clean build test | xcpretty
+      run: xcodebuild -project /Users/runner/work/SnapCopy/SnapCopy/SnapCopy/SnapCopy.xcodeproj -scheme SnapCopyTests clean build test | xcpretty

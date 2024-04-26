@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		842B322E2BDB671E0021225C /* SnapCopyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842B322D2BDB671E0021225C /* SnapCopyTests.swift */; };
 		84728EBD2B7CF0C8007ED57A /* Packages in Frameworks */ = {isa = PBXBuildFile; productRef = 84728EBC2B7CF0C8007ED57A /* Packages */; };
 		84728EBF2B7CF0F3007ED57A /* Packages in Resources */ = {isa = PBXBuildFile; fileRef = 84728EBE2B7CF0F3007ED57A /* Packages */; };
 		8495C80E2B776F4800B3CFC2 /* SnapCopyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8495C80D2B776F4800B3CFC2 /* SnapCopyApp.swift */; };
@@ -14,7 +15,19 @@
 		8495C8152B776F4900B3CFC2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8495C8142B776F4900B3CFC2 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		842B322F2BDB671E0021225C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8495C8022B776F4800B3CFC2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8495C8092B776F4800B3CFC2;
+			remoteInfo = SnapCopy;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		842B322B2BDB671E0021225C /* SnapCopyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SnapCopyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		842B322D2BDB671E0021225C /* SnapCopyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapCopyTests.swift; sourceTree = "<group>"; };
 		846EDFB32B8082CB00A52B87 /* SnapCopyDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SnapCopyDebug.entitlements; sourceTree = "<group>"; };
 		84728EBE2B7CF0F3007ED57A /* Packages */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Packages; path = ../Packages; sourceTree = "<group>"; };
 		8495C80A2B776F4800B3CFC2 /* SnapCopy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnapCopy.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -26,6 +39,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		842B32282BDB671E0021225C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8495C8072B776F4800B3CFC2 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -37,11 +57,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		842B322C2BDB671E0021225C /* SnapCopyTests */ = {
+			isa = PBXGroup;
+			children = (
+				842B322D2BDB671E0021225C /* SnapCopyTests.swift */,
+			);
+			path = SnapCopyTests;
+			sourceTree = "<group>";
+		};
 		8495C8012B776F4800B3CFC2 = {
 			isa = PBXGroup;
 			children = (
 				84728EBE2B7CF0F3007ED57A /* Packages */,
 				8495C80C2B776F4800B3CFC2 /* SnapCopy */,
+				842B322C2BDB671E0021225C /* SnapCopyTests */,
 				8495C80B2B776F4800B3CFC2 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -50,6 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				8495C80A2B776F4800B3CFC2 /* SnapCopy.app */,
+				842B322B2BDB671E0021225C /* SnapCopyTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -78,6 +108,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		842B322A2BDB671E0021225C /* SnapCopyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 842B32332BDB671E0021225C /* Build configuration list for PBXNativeTarget "SnapCopyTests" */;
+			buildPhases = (
+				842B32272BDB671E0021225C /* Sources */,
+				842B32282BDB671E0021225C /* Frameworks */,
+				842B32292BDB671E0021225C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				842B32302BDB671E0021225C /* PBXTargetDependency */,
+			);
+			name = SnapCopyTests;
+			productName = SnapCopyTests;
+			productReference = 842B322B2BDB671E0021225C /* SnapCopyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		8495C8092B776F4800B3CFC2 /* SnapCopy */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8495C8182B776F4900B3CFC2 /* Build configuration list for PBXNativeTarget "SnapCopy" */;
@@ -105,9 +153,12 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1520;
+				LastSwiftUpdateCheck = 1530;
 				LastUpgradeCheck = 1520;
 				TargetAttributes = {
+					842B322A2BDB671E0021225C = {
+						CreatedOnToolsVersion = 15.3;
+					};
 					8495C8092B776F4800B3CFC2 = {
 						CreatedOnToolsVersion = 15.2;
 					};
@@ -129,11 +180,19 @@
 			projectRoot = "";
 			targets = (
 				8495C8092B776F4800B3CFC2 /* SnapCopy */,
+				842B322A2BDB671E0021225C /* SnapCopyTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		842B32292BDB671E0021225C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8495C8082B776F4800B3CFC2 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -147,6 +206,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		842B32272BDB671E0021225C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				842B322E2BDB671E0021225C /* SnapCopyTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8495C8062B776F4800B3CFC2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -157,7 +224,57 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		842B32302BDB671E0021225C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8495C8092B776F4800B3CFC2 /* SnapCopy */;
+			targetProxy = 842B322F2BDB671E0021225C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		842B32312BDB671E0021225C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = S37PCWVC2W;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dmytrochumakov.SnapCopyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		842B32322BDB671E0021225C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = S37PCWVC2W;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dmytrochumakov.SnapCopyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		8495C8162B776F4900B3CFC2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -356,6 +473,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		842B32332BDB671E0021225C /* Build configuration list for PBXNativeTarget "SnapCopyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				842B32312BDB671E0021225C /* Debug */,
+				842B32322BDB671E0021225C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		8495C8052B776F4800B3CFC2 /* Build configuration list for PBXProject "SnapCopy" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
